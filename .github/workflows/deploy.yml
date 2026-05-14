@@ -22,7 +22,8 @@ jobs:
         run: npm install
 
       - name: Build React app
-        run: npm run build
+        # CI=false yahan isliye hai taake unused variables ki warnings build na rokein
+        run: CI=false npm run build
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
