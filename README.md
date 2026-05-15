@@ -1,70 +1,152 @@
-# Getting Started with Create React App
+# Naqib Zakir — Developer Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, responsive personal portfolio website built with React. Features a dark/light theme toggle, smooth scroll animations, and a fully automated CI/CD deployment pipeline to AWS S3 via GitHub Actions.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Live Demo
 
-### `npm start`
+> Deployed on AWS S3 — link available after deployment.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
 
-### `npm test`
+- Animated typewriter effect in Hero section
+- Dark / Light theme toggle
+- Scroll animations powered by AOS
+- Fully responsive layout (mobile + desktop)
+- Professional SVG social icons (GitHub, LinkedIn, Behance, Facebook)
+- Projects section with live demo and GitHub links
+- Contact form section
+- CI/CD pipeline — auto deploys to AWS S3 on every push to `main`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## Tech Stack
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+| Layer | Technology |
+|---|---|
+| Frontend | React 18, JavaScript (ES6+) |
+| Styling | Inline CSS with CSS Variables |
+| Animations | AOS (Animate On Scroll) |
+| Hosting | AWS S3 (Static Website Hosting) |
+| CI/CD | GitHub Actions |
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Projects Showcased
 
-### `npm run eject`
+| Project | Stack | Link |
+|---|---|---|
+| Online Book Sale & Purchase | Blazor .NET, C#, SQL Server | [GitHub](https://github.com/naqiib/Fyp.git) |
+| Chitral Tourism Management System | MongoDB, Express, React, Node.js | [Live Demo](https://chitral-tourism-git-main-naqiibs-projects.vercel.app/) |
+| Restaurant Management System | Flutter, Firebase, Dart | [GitHub](https://github.com/naqiib/restaurant-.git) |
+| Developer Portfolio | React, AWS S3, GitHub Actions | This repo |
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Getting Started
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Prerequisites
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Node.js v18+
+- npm
 
-## Learn More
+### Installation
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+# Clone the repository
+git clone https://github.com/naqiib/naqib-portfolio.git
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Navigate into the project
+cd naqib-portfolio
 
-### Code Splitting
+# Install dependencies
+npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+# Start development server
+npm start
+```
 
-### Analyzing the Bundle Size
+App runs at `http://localhost:3000`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Build for Production
 
-### Making a Progressive Web App
+```bash
+npm run build
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Output goes into the `/build` folder, ready for deployment.
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Adding Your Photo
 
-### Deployment
+Place your photo as `perfil.png` inside the `public/` folder. The Hero and About sections will display it automatically.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
+## Deployment (AWS S3 + GitHub Actions)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The pipeline triggers automatically on every push to `main`.
+
+### Required GitHub Secrets
+
+Go to **Settings → Secrets and variables → Actions** and add:
+
+| Secret | Description |
+|---|---|
+| `AWS_ACCESS_KEY_ID` | Your AWS IAM access key |
+| `AWS_SECRET_ACCESS_KEY` | Your AWS IAM secret key |
+| `AWS_REGION` | e.g. `us-east-1` |
+| `AWS_S3_BUCKET` | Your S3 bucket name |
+
+### Pipeline Steps
+
+1. Checkout code
+2. Setup Node.js 18
+3. Install dependencies
+4. Build React app
+5. Configure AWS credentials
+6. Sync `/build` to S3 bucket
+
+---
+
+## Folder Structure
+
+```
+naqib-portfolio/
+├── public/
+│   ├── index.html
+│   └── perfil.png          ← your photo goes here
+├── src/
+│   ├── components/
+│   │   ├── Navbar.jsx
+│   │   ├── Hero.jsx
+│   │   ├── About.jsx
+│   │   ├── Skills.jsx
+│   │   ├── Work.jsx
+│   │   ├── Blog.jsx
+│   │   ├── Contact.jsx
+│   │   └── Footer.jsx
+│   ├── App.js
+│   ├── index.js
+│   └── index.css
+├── .github/
+│   └── workflows/
+│       └── deploy.yml
+└── package.json
+```
+
+---
+
+## Connect
+
+- GitHub: [github.com/naqiib](https://github.com/naqiib)
+- LinkedIn: [linkedin.com/in/naqib-zakir-303711183](https://www.linkedin.com/in/naqib-zakir-303711183/)
+- Behance: [behance.net/naqibullah6](https://www.behance.net/naqibullah6)
+
+---
+
+© 2025 Naqib Zakir. All rights reserved.
