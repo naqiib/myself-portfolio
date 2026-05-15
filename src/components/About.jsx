@@ -20,15 +20,17 @@ const About = () => {
             fontSize: '8rem', position: 'relative',
             boxShadow: '0 20px 80px rgba(139,47,201,.2)',
           }}>
-           <img src="/perfil.png" alt="Naqib" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'top'}} /> 
-           
+              <img src="/perfil.png" alt="Naqib" style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'top'}} />
+            <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="rgba(180,79,255,0.3)" strokeWidth="0.8" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+            </svg>
             <div style={{
               position: 'absolute', bottom: 0, left: 0, right: 0,
               background: 'linear-gradient(to top, rgba(26,10,46,.9), transparent)',
               padding: '2rem 1.5rem 1.5rem',
             }}>
               <div style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: '1.1rem', color: '#fff' }}>Naqib Zakir</div>
-              <div style={{ color: 'var(--accent-bright)', fontSize: '.82rem' }}>Frontend Developer</div>
+              <div style={{ color: 'var(--accent-bright)', fontSize: '.82rem' }}>Full Stack Developer</div>
             </div>
           </div>
           {/* Badge */}

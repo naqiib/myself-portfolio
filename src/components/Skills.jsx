@@ -1,8 +1,38 @@
 import React from 'react';
 
+const WebIcon = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+  </svg>
+);
+const CodeIcon = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+  </svg>
+);
+const CloudIcon = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>
+  </svg>
+);
+const DbIcon = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+    <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+  </svg>
+);
+const DesignIcon = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="13.5" cy="6.5" r="0.5" fill="currentColor"/><circle cx="17.5" cy="10.5" r="0.5" fill="currentColor"/>
+    <circle cx="8.5" cy="7.5" r="0.5" fill="currentColor"/><circle cx="6.5" cy="12.5" r="0.5" fill="currentColor"/>
+    <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/>
+  </svg>
+);
+
 const skillGroups = [
   {
-    icon: '🌐', category: 'Web Development',
+    icon: <WebIcon />, category: 'Web Development',
     skills: [
       { name: 'HTML & CSS', pct: 90 },
       { name: 'React', pct: 80 },
@@ -11,28 +41,28 @@ const skillGroups = [
     ]
   },
   {
-    icon: '💻', category: 'Programming',
+    icon: <CodeIcon />, category: 'Programming',
     skills: [
       { name: 'C++', pct: 75 },
       { name: 'Python', pct: 70 },
     ]
   },
   {
-    icon: '☁️', category: 'Hosting & Cloud',
+    icon: <CloudIcon />, category: 'Hosting & Cloud',
     skills: [
       { name: 'AWS (S3, EC2)', pct: 75 },
       { name: 'GitHub + CI/CD', pct: 82 },
     ]
   },
   {
-    icon: '🗄️', category: 'Database',
+    icon: <DbIcon />, category: 'Database',
     skills: [
       { name: 'SQL Server', pct: 80 },
       { name: 'Entity Framework', pct: 75 },
     ]
   },
   {
-    icon: '🎨', category: 'Design',
+    icon: <DesignIcon />, category: 'Design',
     skills: [
       { name: 'Figma', pct: 85 },
       { name: 'Adobe Illustrator', pct: 70 },
@@ -62,7 +92,7 @@ const Skills = () => (
         onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.boxShadow = 'none'; }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '.75rem', marginBottom: '1.5rem' }}>
-            <span style={{ fontSize: '1.6rem', width: 44, height: 44, background: 'rgba(139,47,201,.15)', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{g.icon}</span>
+            <span style={{ color: 'var(--accent2)', width: 44, height: 44, background: 'rgba(139,47,201,.15)', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{g.icon}</span>
             <span style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '1rem' }}>{g.category}</span>
           </div>
           {g.skills.map((s, j) => (
