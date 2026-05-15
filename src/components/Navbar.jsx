@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const Navbar = ({ theme, toggleTheme }) => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
   const links = ['Home','About','Skills','Projects','Blog','Contact'];
 
   useEffect(() => {
@@ -22,8 +25,9 @@ const Navbar = ({ theme, toggleTheme }) => {
         borderBottom: scrolled ? '1px solid var(--border)' : 'none',
         transition: 'all 0.4s',
       }}>
+
         {/* Logo */}
-        <a href="#home" style={{
+        <a href="/" style={{
           fontFamily: 'var(--font-display)', fontWeight: 800,
           fontSize: '1.4rem', color: 'var(--text)', textDecoration: 'none',
           display: 'flex', alignItems: 'center', gap: '.3rem',
@@ -37,50 +41,68 @@ const Navbar = ({ theme, toggleTheme }) => {
           <span>Naqib<span style={{ color: 'var(--accent2)' }}>.</span></span>
         </a>
 
-        {/* Desktop links */}
-        <ul style={{ display: 'flex', gap: '2rem', listStyle: 'none', alignItems: 'center' }}>
-          {links.map(l => (
-            <li key={l}>
-              <a href={`#${l.toLowerCase()}`} style={{
-                color: 'var(--muted)', textDecoration: 'none',
-                fontSize: '.88rem', fontWeight: 500,
-                transition: 'color .2s',
-              }}
-              onMouseEnter={e => e.target.style.color = 'var(--text)'}
-              onMouseLeave={e => e.target.style.color = 'var(--muted)'}
-              >{l}</a>
-            </li>
-          ))}
-        </ul>
+        {/* Desktop links — hide on /services */}
+        {location.pathname !== '/services' && (
+          <ul style={{ display: 'flex', gap: '2rem', listStyle: 'none', alignItems: 'center', margin: 0, padding: 0 }}>
+            {links.map(l => (
+              <li key={l}>
+                <a href={`#${l.toLowerCase()}`} style={{
+                  color: 'var(--muted)', textDecoration: 'none',
+                  fontSize: '.88rem', fontWeight: 500,
+                  transition: 'color .2s',
+                }}
+                onMouseEnter={e => e.target.style.color = 'var(--text)'}
+                onMouseLeave={e => e.target.style.color = 'var(--muted)'}
+                >{l}</a>
+              </li>
+            ))}
+          </ul>
+        )}
 
         <div style={{ display: 'flex', gap: '.75rem', alignItems: 'center' }}>
+
           {/* Theme toggle */}
           <button onClick={toggleTheme} style={{
             width: 40, height: 40, borderRadius: 10,
             border: '1px solid var(--border)',
             background: 'var(--surface)',
             color: 'var(--text)', cursor: 'pointer',
-            fontSize: '1.1rem', display: 'flex',
-            alignItems: 'center', justifyContent: 'center',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
             transition: 'var(--transition)',
           }}
           onMouseEnter={e => e.currentTarget.style.background = 'var(--accent)'}
           onMouseLeave={e => e.currentTarget.style.background = 'var(--surface)'}
           title={theme === 'dark' ? 'Switch to Light' : 'Switch to Dark'}
           >
-          {theme === 'dark' ? (
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-              <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-            </svg>
-          ) : (
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-            </svg>
-          )}
+            {theme === 'dark' ? (
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+              </svg>
+            ) : (
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+              </svg>
+            )}
           </button>
+
+          {/* Services Button */}
+          <button onClick={() => navigate('/services')} style={{
+            padding: '.6rem 1.4rem', borderRadius: 10,
+            background: location.pathname === '/services' ? 'var(--accent)' : 'transparent',
+            color: location.pathname === '/services' ? '#fff' : 'var(--text)',
+            border: '1px solid var(--border)',
+            cursor: 'pointer', fontWeight: 600, fontSize: '.85rem',
+            transition: 'var(--transition)',
+          }}
+          onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--accent2)'; e.currentTarget.style.color = 'var(--accent2)'; }}
+          onMouseLeave={e => {
+            e.currentTarget.style.borderColor = 'var(--border)';
+            e.currentTarget.style.color = location.pathname === '/services' ? '#fff' : 'var(--text)';
+          }}
+          >Services</button>
 
           {/* Hire me */}
           <a href="#contact" style={{
@@ -89,21 +111,23 @@ const Navbar = ({ theme, toggleTheme }) => {
             textDecoration: 'none', fontWeight: 600,
             fontSize: '.85rem', border: '1px solid var(--accent2)',
             transition: 'var(--transition)',
+            display: 'inline-flex', alignItems: 'center', gap: '.3rem',
           }}
           onMouseEnter={e => e.currentTarget.style.background = 'var(--accent2)'}
           onMouseLeave={e => e.currentTarget.style.background = 'var(--accent)'}
           >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{marginRight: '.3rem'}}>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
               <polyline points="22,6 12,13 2,6"/>
             </svg>
-            Hire me</a>
+            Hire me
+          </a>
 
-          {/* Mobile toggle */}
+          {/* Mobile hamburger */}
           <button onClick={() => setOpen(!open)} style={{
             display: 'none', width: 40, height: 40, borderRadius: 10,
             border: '1px solid var(--border)', background: 'var(--surface)',
-            color: 'var(--text)', cursor: 'pointer', fontSize: '1.2rem',
+            color: 'var(--text)', cursor: 'pointer',
             alignItems: 'center', justifyContent: 'center',
           }} id="mob-btn">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -120,12 +144,22 @@ const Navbar = ({ theme, toggleTheme }) => {
           background: 'rgba(26,10,46,0.98)', backdropFilter: 'blur(20px)',
           padding: '1.5rem 5vw', borderBottom: '1px solid var(--border)',
         }}>
-          {links.map(l => (
+          {location.pathname !== '/services' && links.map(l => (
             <a key={l} href={`#${l.toLowerCase()}`}
               onClick={() => setOpen(false)}
               style={{ display: 'block', color: 'var(--muted)', textDecoration: 'none', padding: '.75rem 0', borderBottom: '1px solid var(--border)', fontWeight: 500 }}
             >{l}</a>
           ))}
+          <button onClick={() => { setOpen(false); navigate('/services'); }} style={{
+            display: 'block', width: '100%', textAlign: 'left',
+            color: 'var(--accent2)', background: 'none', border: 'none',
+            borderBottom: '1px solid var(--border)',
+            padding: '.75rem 0', fontWeight: 600, fontSize: '1rem', cursor: 'pointer',
+          }}>Services</button>
+          <a href="#contact" onClick={() => setOpen(false)} style={{
+            display: 'block', color: '#fff', textDecoration: 'none',
+            padding: '.75rem 0', fontWeight: 600,
+          }}>Hire me</a>
         </div>
       )}
 

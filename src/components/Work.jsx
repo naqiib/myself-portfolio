@@ -66,6 +66,20 @@ const projects = [
       </svg>
     ),
   },
+  {
+    title: 'Online Quran Academy',
+    desc: 'Full-stack web platform for online Quran teaching. Features student & teacher portals, class scheduling, and real-time data management — built for a real client.',
+    tags: ['React', 'Firebase', 'Firestore', 'Authentication'],
+    github: 'https://github.com/naqiib/OnlineQuranAcedmy.git',
+    live: null,
+    color: '#1a3d1a',
+    icon: (
+      <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+      </svg>
+    ),
+  },
 ];
 
 const Work = () => (

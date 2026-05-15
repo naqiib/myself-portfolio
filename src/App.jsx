@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Navbar from './components/Navbar';
@@ -9,19 +10,12 @@ import Work from './components/Work';
 import Blog from './components/Blog';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import Services from './components/Services';
 
-function App() {
-  const [theme, setTheme] = useState('dark');
-
+function MainPage() {
   useEffect(() => { AOS.init({ duration: 700, once: true, offset: 80 }); }, []);
-
-  useEffect(() => { document.documentElement.setAttribute('data-theme', theme); }, [theme]);
-
-  const toggleTheme = () => setTheme(t => t === 'dark' ? 'light' : 'dark');
-
   return (
     <>
-      <Navbar theme={theme} toggleTheme={toggleTheme} />
       <Hero />
       <About />
       <Skills />
@@ -31,6 +25,22 @@ function App() {
       <Footer />
       <ScrollTop />
     </>
+  );
+}
+
+function App() {
+  const [theme, setTheme] = useState('dark');
+  useEffect(() => { document.documentElement.setAttribute('data-theme', theme); }, [theme]);
+  const toggleTheme = () => setTheme(t => t === 'dark' ? 'light' : 'dark');
+
+  return (
+    <BrowserRouter>
+      <Navbar theme={theme} toggleTheme={toggleTheme} />
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/services" element={<Services />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
