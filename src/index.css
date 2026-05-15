@@ -1,16 +1,35 @@
-@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap");
 
 :root {
-  --bg: #0a0a0f;
-  --surface: #12121a;
-  --surface2: #1a1a26;
-  --accent: #6c63ff;
-  --accent2: #ff6584;
-  --text: #e8e8f0;
-  --muted: #6b6b80;
-  --border: rgba(108,99,255,0.15);
-  --font-display: 'Syne', sans-serif;
-  --font-body: 'DM Sans', sans-serif;
+  --bg: #1a0a2e;
+  --bg2: #231040;
+  --surface: #2d1a4a;
+  --surface2: #3d2560;
+  --accent: #8b2fc9;
+  --accent2: #b44fff;
+  --accent-bright: #d580ff;
+  --text: #f0e8ff;
+  --muted: #9b8ab5;
+  --border: rgba(180,79,255,0.18);
+  --card: rgba(45,26,74,0.8);
+  --font-display: 'Outfit', sans-serif;
+  --font-body: 'Space Grotesk', sans-serif;
+  --radius: 16px;
+  --transition: all 0.3s cubic-bezier(.23,1,.32,1);
+}
+
+[data-theme="light"] {
+  --bg: #f3eeff;
+  --bg2: #ece3ff;
+  --surface: #ffffff;
+  --surface2: #f0e8ff;
+  --accent: #7c22b8;
+  --accent2: #9b3de0;
+  --accent-bright: #b44fff;
+  --text: #1a0a2e;
+  --muted: #6b5a85;
+  --border: rgba(124,34,184,0.15);
+  --card: rgba(255,255,255,0.9);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -22,4 +41,10 @@ body {
   font-size: 1rem;
   line-height: 1.7;
   overflow-x: hidden;
+  transition: background 0.4s, color 0.4s;
 }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
