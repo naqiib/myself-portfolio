@@ -127,16 +127,18 @@ const Hero = () => {
           onMouseLeave={e => { e.currentTarget.style.background = 'var(--accent)'; e.currentTarget.style.transform = 'translateY(0)'; }}
           >Got a project?</a>
 
-          <a href="/mycv.pdf" download style={{
-            padding: '.85rem 2rem', borderRadius: 12,
-            background: 'transparent', color: 'var(--text)',
-            textDecoration: 'none', fontWeight: 700, fontSize: '.95rem',
-            display: 'inline-flex', alignItems: 'center', gap: '.4rem',
-            border: '2px solid var(--surface2)', transition: 'var(--transition)',
-          }}
-          onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--accent2)'; e.currentTarget.style.color = 'var(--accent2)'; }}
-          onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--surface2)'; e.currentTarget.style.color = 'var(--text)'; }}
-          >My Resume</a>
+          <a href="/Naqib_Zakir_CV.pdf" download style={{
+  padding: '.85rem 2rem', borderRadius: 12,
+  background: 'transparent', color: 'var(--text)',
+  textDecoration: 'none', fontWeight: 700, fontSize: '.95rem',
+  display: 'inline-flex', alignItems: 'center', gap: '.4rem',
+  border: '2px solid var(--surface2)', transition: 'var(--transition)',
+}}
+onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--accent2)'; e.currentTarget.style.color = 'var(--accent2)'; }}
+onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--surface2)'; e.currentTarget.style.color = 'var(--text)'; }}
+>
+  My Resume
+</a>
         </div>
       </div>
 
